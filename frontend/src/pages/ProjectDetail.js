@@ -79,13 +79,30 @@ const ProjectDetail = () => {
   const [filterStatus, setFilterStatus] = useState('ALL');
 
   const load = async () => {
-    try {
-      const [pRes, tRes, uRes] = await Promise.all([projectAPI.getById(id), taskAPI.getByProject(id), authAPI.getUsers()]);
-      setProject(pRes.data); setTasks(tRes.data); setUsers(uRes.data);
-    } catch { toast.error('Failed to load project'); navigate('/projects'); }
-    finally { setLoading(false); }
-  };
+        try {
+            const [pRes, tRes] = await Promise.all([
+                projectAPI.getById(id),
+                taskAPI.getByProject(id)
+            ]);
 
+            setProject(pRes.data);
+            setTasks(tRes.data);
+
+            if (isAdmin) {
+                const uRes = await authAPI.getUsers();
+                setUsers(uRes.data);
+            } else {
+                setUsers([]);
+            }
+
+        } catch (err) {
+            console.error("Project detail load failed:", err);
+            toast.error('Failed to load project');
+            navigate('/projects');
+        } finally {
+            setLoading(false);
+        }
+  };
   useEffect(() => { load(); }, [id]);
 
   const handleCreateTask = async (e) => {
