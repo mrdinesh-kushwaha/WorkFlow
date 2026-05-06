@@ -16,8 +16,10 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
 
     @Query("""
        SELECT DISTINCT p FROM Project p
+       LEFT JOIN p.members m
        LEFT JOIN p.tasks t
        WHERE p.owner.id = :userId
+          OR m.id = :userId
           OR t.assignee.id = :userId
        """)
     List<Project> findAllAccessibleByUser(@Param("userId") Long userId);
