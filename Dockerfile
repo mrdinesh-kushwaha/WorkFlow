@@ -5,7 +5,7 @@ COPY frontend/package.json ./
 RUN npm install --legacy-peer-deps
 COPY frontend/ ./
 # Point API calls to same origin (Railway serves everything from one port)
-ENV REACT_APP_API_URL=
+ENV REACT_APP_API_URL=""
 RUN npm run build
 
 # ===== Stage 2: Build Backend =====
@@ -23,5 +23,4 @@ FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 COPY --from=backend-build /app/backend/target/taskmanager-backend-1.0.0.jar app.jar
 EXPOSE 8080
-ENV SPRING_PROFILES_ACTIVE=prod
-ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+ENTRYPOINT ["java", "-Dspring.profiles.active=prod", "-jar", "/app/app.jar"]
