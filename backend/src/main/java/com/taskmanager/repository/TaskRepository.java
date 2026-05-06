@@ -27,9 +27,9 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     @Query("SELECT DISTINCT t FROM Task t JOIN t.project p LEFT JOIN p.members m WHERE (p.owner.id = :userId OR m.id = :userId) AND t.dueDate < :today AND t.status != 'DONE'")
     List<Task> findOverdueTasksForUser(@Param("userId") Long userId, @Param("today") LocalDate today);
 
-    @Query("SELECT COUNT(DISTINCT t) FROM Task t JOIN t.project p LEFT JOIN p.members m WHERE (p.owner.id = :userId OR m.id = :userId)")
+    @Query("SELECT COUNT(t) FROM Task t WHERE t.assignee.id = :userId")
     long countTasksForUser(@Param("userId") Long userId);
 
-    @Query("SELECT COUNT(DISTINCT t) FROM Task t JOIN t.project p LEFT JOIN p.members m WHERE (p.owner.id = :userId OR m.id = :userId) AND t.status = :status")
+    @Query("SELECT COUNT(t) FROM Task t WHERE t.assignee.id = :userId AND t.status = :status")
     long countTasksByStatusForUser(@Param("userId") Long userId, @Param("status") Task.Status status);
 }

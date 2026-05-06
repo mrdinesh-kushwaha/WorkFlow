@@ -66,6 +66,12 @@ public class TaskService {
             User assignee = userRepository.findById(request.getAssigneeId())
                     .orElseThrow(() -> new RuntimeException("Assignee not found"));
             task.setAssignee(assignee);
+            boolean alreadyMember = project.getMembers().stream()
+                    .anyMatch(m -> m.getId().equals(assignee.getId()));
+
+            if (!alreadyMember) {
+                project.getMembers().add(assignee);
+            }
         }
 
         return toTaskDTO(taskRepository.save(task));
@@ -86,6 +92,12 @@ public class TaskService {
             User assignee = userRepository.findById(request.getAssigneeId())
                     .orElseThrow(() -> new RuntimeException("Assignee not found"));
             task.setAssignee(assignee);
+            boolean alreadyMember = task.getProject().getMembers().stream()
+                    .anyMatch(m -> m.getId().equals(assignee.getId()));
+
+            if (!alreadyMember) {
+                task.getProject().getMembers().add(assignee);
+            }
         } else {
             task.setAssignee(null);
         }
@@ -96,7 +108,16 @@ public class TaskService {
     public TaskDTO updateTaskStatus(Long taskId, Task.Status status, User currentUser) {
         Task task = taskRepository.findById(taskId)
                 .orElseThrow(() -> new RuntimeException("Task not found"));
-        verifyProjectAccess(task.getProject(), currentUser);
+
+        boolean canUpdate =
+                currentUser.getRole() == User.Role.ADMIN ||
+                        task.getCreatedBy().getId().equals(currentUser.getId()) ||
+                        (task.getAssignee() != null && task.getAssignee().getId().equals(currentUser.getId()));
+
+        if (!canUpdate) {
+            throw new RuntimeException("Only assigned member can update this task");
+        }
+
         task.setStatus(status);
         return toTaskDTO(taskRepository.save(task));
     }
