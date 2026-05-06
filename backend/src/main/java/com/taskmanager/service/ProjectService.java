@@ -85,13 +85,20 @@ public class ProjectService {
         Project project = projectRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Project not found"));
 
-        if (currentUser.getRole() == User.Role.ADMIN) return project;
+        if (currentUser.getRole() == User.Role.ADMIN) {
+            return project;
+        }
+
+        boolean isOwner = project.getOwner().getId().equals(currentUser.getId());
+
+        boolean isMember = project.getMembers().stream()
+                .anyMatch(m -> m.getId().equals(currentUser.getId()));
 
         boolean hasAssignedTask = project.getTasks().stream()
                 .anyMatch(t -> t.getAssignee() != null &&
                         t.getAssignee().getId().equals(currentUser.getId()));
 
-        if (!hasAssignedTask) {
+        if (!isOwner && !isMember && !hasAssignedTask) {
             throw new RuntimeException("Access denied");
         }
 
