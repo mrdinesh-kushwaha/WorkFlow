@@ -23,14 +23,13 @@ const Modal = ({ open, title, onClose, children }) => {
     </div>
   );
 };
-
-const TaskCard = ({ task, onStatusChange, onDelete }) => {
+const TaskCard = ({ task, onStatusChange, onDelete, canDelete }) => {
   const isOverdue = task.overdue;
   return (
     <div style={{ background:'#0f172a', border:`1px solid ${isOverdue ? '#ef444430' : '#1e293b'}`, borderRadius:10, padding:16, marginBottom:8 }}>
       <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', marginBottom:8 }}>
         <span style={{ color:'#f1f5f9', fontSize:13, fontWeight:500, flex:1, marginRight:8 }}>{task.title}</span>
-          {isOwner && (
+          {canDelete && (
               <button
                   onClick={() => onDelete(task.id)}
                   style={{
@@ -207,7 +206,13 @@ const ProjectDetail = () => {
           ) : (
             <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(280px, 1fr))', gap:12 }}>
               {filteredTasks.map(task => (
-                <TaskCard key={task.id} task={task} onStatusChange={handleStatusChange} onDelete={handleDeleteTask} />
+                  <TaskCard
+                      key={task.id}
+                      task={task}
+                      onStatusChange={handleStatusChange}
+                      onDelete={handleDeleteTask}
+                      canDelete={isOwner}
+                  />
               ))}
             </div>
           )}
