@@ -14,7 +14,12 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
 
     List<Project> findByOwner(User owner);
 
-    @Query("SELECT DISTINCT p FROM Project p LEFT JOIN p.members m WHERE p.owner.id = :userId OR m.id = :userId")
+    @Query("""
+       SELECT DISTINCT p FROM Project p
+       LEFT JOIN p.tasks t
+       WHERE p.owner.id = :userId
+          OR t.assignee.id = :userId
+       """)
     List<Project> findAllAccessibleByUser(@Param("userId") Long userId);
 
     @Query("SELECT DISTINCT p FROM Project p JOIN p.members m WHERE m.id = :userId")

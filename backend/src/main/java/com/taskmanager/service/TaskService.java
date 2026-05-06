@@ -27,9 +27,18 @@ public class TaskService {
     public List<TaskDTO> getTasksByProject(Long projectId, User currentUser) {
         Project project = projectRepository.findById(projectId)
                 .orElseThrow(() -> new RuntimeException("Project not found"));
+
         verifyProjectAccess(project, currentUser);
+
         return taskRepository.findByProjectId(projectId).stream()
-                .map(this::toTaskDTO).collect(Collectors.toList());
+                .filter(task ->
+                        currentUser.getRole() == User.Role.ADMIN ||
+                                project.getOwner().getId().equals(currentUser.getId()) ||
+                                task.getCreatedBy().getId().equals(currentUser.getId()) ||
+                                (task.getAssignee() != null && task.getAssignee().getId().equals(currentUser.getId()))
+                )
+                .map(this::toTaskDTO)
+                .collect(Collectors.toList());
     }
 
     public TaskDTO getTask(Long taskId, User currentUser) {

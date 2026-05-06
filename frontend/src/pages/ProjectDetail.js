@@ -140,8 +140,11 @@ const ProjectDetail = () => {
   const isOwner = project.owner?.id === user?.id || isAdmin;
   const filteredTasks = filterStatus === 'ALL' ? tasks : tasks.filter(t => t.status === filterStatus);
   const tasksByStatus = STATUSES.reduce((acc, s) => { acc[s] = tasks.filter(t => t.status === s); return acc; }, {});
-  const nonMembers = users.filter(u => !project.members?.some(m => m.id === u.id));
-
+    const nonMembers = users.filter(u =>
+        u.id !== user?.id &&
+        u.role !== 'ADMIN' &&
+        !project.members?.some(m => m.id === u.id)
+    );
   return (
     <div style={{ padding:32, maxWidth:1200 }}>
       {/* Header */}
@@ -160,9 +163,11 @@ const ProjectDetail = () => {
                 <UserPlus size={14} /> Members
               </button>
             )}
-            <button onClick={() => setShowTaskModal(true)} style={{ display:'flex', alignItems:'center', gap:6, padding:'9px 16px', background:'linear-gradient(135deg,#6366f1,#8b5cf6)', border:'none', borderRadius:8, color:'white', cursor:'pointer', fontSize:13, fontWeight:600 }}>
-              <Plus size={14} /> Add Task
-            </button>
+              {isOwner && (
+                  <button onClick={() => setShowTaskModal(true)} style={{ display:'flex', alignItems:'center', gap:6, padding:'9px 16px', background:'linear-gradient(135deg,#6366f1,#8b5cf6)', border:'none', borderRadius:8, color:'white', cursor:'pointer', fontSize:13, fontWeight:600 }}>
+                      <Plus size={14} /> Add Task
+                  </button>
+              )}
           </div>
         </div>
       </div>
@@ -264,7 +269,13 @@ const ProjectDetail = () => {
           <label style={{ display:'block', color:'#94a3b8', fontSize:12, marginBottom:4 }}>Assign To</label>
           <select style={inputStyle} value={taskForm.assigneeId} onChange={e => setTaskForm({...taskForm, assigneeId:e.target.value})}>
             <option value="">Unassigned</option>
-            {project.members?.map(m => <option key={m.id} value={m.id}>{m.name}</option>)}
+              {users
+                  .filter(u => u.role === 'MEMBER')
+                  .map(u => (
+                      <option key={u.id} value={u.id}>
+                          {u.name}
+                      </option>
+                  ))}
           </select>
           <button type="submit" disabled={saving} style={{ padding:'10px 20px', background:'linear-gradient(135deg,#6366f1,#8b5cf6)', border:'none', borderRadius:8, color:'white', fontSize:14, fontWeight:600, cursor:'pointer', marginRight:8 }}>
             {saving ? 'Creating...' : 'Create Task'}
