@@ -1,8 +1,8 @@
 # ===== Stage 1: Build Frontend =====
 FROM node:18-alpine AS frontend-build
 WORKDIR /app/frontend
-COPY frontend/package.json ./
-RUN npm install --legacy-peer-deps
+COPY frontend/package.json frontend/package-lock.json ./
+RUN npm ci --legacy-peer-deps
 COPY frontend/ ./
 # Point API calls to same origin (Railway serves everything from one port)
 ENV REACT_APP_API_URL=
