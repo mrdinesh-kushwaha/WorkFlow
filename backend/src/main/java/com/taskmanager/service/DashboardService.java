@@ -26,13 +26,24 @@ public class DashboardService {
 
         dto.setTotalProjects(projects.size());
 
-        dto.setTotalTasks(taskRepository.countTasksForUser(currentUser.getId()));
-        dto.setTodoTasks(taskRepository.countTasksByStatusForUser(currentUser.getId(), Task.Status.TODO));
-        dto.setInProgressTasks(taskRepository.countTasksByStatusForUser(currentUser.getId(), Task.Status.IN_PROGRESS));
-        dto.setDoneTasks(taskRepository.countTasksByStatusForUser(currentUser.getId(), Task.Status.DONE));
+        // Task counts
+        if (currentUser.getRole() == User.Role.ADMIN) {
+            dto.setTotalTasks(taskRepository.count());
+            dto.setTodoTasks(taskRepository.countByStatus(Task.Status.TODO));
+            dto.setInProgressTasks(taskRepository.countByStatus(Task.Status.IN_PROGRESS));
+            dto.setDoneTasks(taskRepository.countByStatus(Task.Status.DONE));
 
-        List<Task> overdueTasks = taskRepository.findOverdueTasksForUser(currentUser.getId(), LocalDate.now());
-        dto.setOverdueTasks(overdueTasks.size());
+            List<Task> overdueTasks = taskRepository.findAllOverdueTasks(LocalDate.now());
+            dto.setOverdueTasks(overdueTasks.size());
+        } else {
+            dto.setTotalTasks(taskRepository.countTasksForUser(currentUser.getId()));
+            dto.setTodoTasks(taskRepository.countTasksByStatusForUser(currentUser.getId(), Task.Status.TODO));
+            dto.setInProgressTasks(taskRepository.countTasksByStatusForUser(currentUser.getId(), Task.Status.IN_PROGRESS));
+            dto.setDoneTasks(taskRepository.countTasksByStatusForUser(currentUser.getId(), Task.Status.DONE));
+
+            List<Task> overdueTasks = taskRepository.findOverdueTasksForUser(currentUser.getId(), LocalDate.now());
+            dto.setOverdueTasks(overdueTasks.size());
+        }
 
         List<TaskDTO> recentTasks = taskRepository.findByAssignee(currentUser).stream()
                 .limit(5)

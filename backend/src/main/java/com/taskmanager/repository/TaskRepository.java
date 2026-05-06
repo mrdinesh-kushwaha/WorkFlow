@@ -16,6 +16,11 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     List<Task> findByProjectId(Long projectId);
     List<Task> findByAssignee(User assignee);
 
+    long countByStatus(Task.Status status);
+
+    @Query("SELECT t FROM Task t WHERE t.dueDate < :today AND t.status != 'DONE'")
+    List<Task> findAllOverdueTasks(@Param("today") LocalDate today);
+
     @Query("SELECT t FROM Task t WHERE t.assignee = :user AND t.dueDate < :today AND t.status != 'DONE'")
     List<Task> findOverdueTasksByUser(@Param("user") User user, @Param("today") LocalDate today);
 
