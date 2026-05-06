@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { projectAPI } from '../api';
 import toast from 'react-hot-toast';
+import { useAuth } from '../context/AuthContext';
 import { Plus, FolderKanban, Users, CheckSquare, Trash2, ArrowRight } from 'lucide-react';
 
 const Modal = ({ open, title, onClose, children }) => {
@@ -20,6 +21,7 @@ const Modal = ({ open, title, onClose, children }) => {
 const inputStyle = { width:'100%', padding:'10px 12px', background:'#0f172a', border:'1px solid #334155', borderRadius:8, color:'#f1f5f9', fontSize:14, outline:'none', boxSizing:'border-box', marginBottom:16 };
 
 const Projects = () => {
+    const { user } = useAuth();
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showCreate, setShowCreate] = useState(false);
@@ -83,10 +85,25 @@ const Projects = () => {
                   <div style={{ width:40, height:40, borderRadius:10, background:'linear-gradient(135deg,#6366f120,#8b5cf620)', border:'1px solid #6366f140', display:'flex', alignItems:'center', justifyContent:'center' }}>
                     <FolderKanban size={18} color="#8b5cf6" />
                   </div>
-                  <button onClick={(e) => handleDelete(p.id, e)} style={{ background:'none', border:'none', color:'#475569', cursor:'pointer', padding:4, borderRadius:6, display:'flex', alignItems:'center' }}
-                    onMouseEnter={e => e.currentTarget.style.color='#ef4444'} onMouseLeave={e => e.currentTarget.style.color='#475569'}>
-                    <Trash2 size={14} />
-                  </button>
+                    {user?.role === 'ADMIN' && (
+                            <button
+                                onClick={(e) => handleDelete(p.id, e)}
+                                style={{
+                                    background:'none',
+                                    border:'none',
+                                    color:'#475569',
+                                    cursor:'pointer',
+                                    padding:4,
+                                    borderRadius:6,
+                                    display:'flex',
+                                    alignItems:'center'
+                                }}
+                                onMouseEnter={e => e.currentTarget.style.color='#ef4444'}
+                                onMouseLeave={e => e.currentTarget.style.color='#475569'}
+                            >
+                                <Trash2 size={14} />
+                            </button>
+                        )}
                 </div>
 
                 <h3 style={{ color:'#f1f5f9', fontSize:16, fontWeight:600, margin:'0 0 6px', letterSpacing:'-0.2px' }}>{p.name}</h3>

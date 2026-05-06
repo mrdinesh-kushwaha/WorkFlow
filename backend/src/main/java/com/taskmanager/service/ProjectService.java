@@ -52,7 +52,16 @@ public class ProjectService {
     }
 
     public void deleteProject(Long id, User currentUser) {
-        Project project = findAndVerifyOwner(id, currentUser);
+        Project project = projectRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Project not found"));
+
+        boolean isAdmin = currentUser.getRole() == User.Role.ADMIN;
+        boolean isOwner = project.getOwner().getId().equals(currentUser.getId());
+
+        if (!isAdmin && !isOwner) {
+            throw new RuntimeException("Only admin or project owner can delete project");
+        }
+        project = findAndVerifyOwner(id, currentUser);
         projectRepository.delete(project);
     }
 

@@ -30,10 +30,23 @@ const TaskCard = ({ task, onStatusChange, onDelete }) => {
     <div style={{ background:'#0f172a', border:`1px solid ${isOverdue ? '#ef444430' : '#1e293b'}`, borderRadius:10, padding:16, marginBottom:8 }}>
       <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', marginBottom:8 }}>
         <span style={{ color:'#f1f5f9', fontSize:13, fontWeight:500, flex:1, marginRight:8 }}>{task.title}</span>
-        <button onClick={() => onDelete(task.id)} style={{ background:'none', border:'none', color:'#475569', cursor:'pointer', padding:2, flexShrink:0 }}
-          onMouseEnter={e => e.currentTarget.style.color='#ef4444'} onMouseLeave={e => e.currentTarget.style.color='#475569'}>
-          <Trash2 size={12} />
-        </button>
+          {isOwner && (
+              <button
+                  onClick={() => onDelete(task.id)}
+                  style={{
+                      background:'none',
+                      border:'none',
+                      color:'#475569',
+                      cursor:'pointer',
+                      padding:2,
+                      flexShrink:0
+                  }}
+                  onMouseEnter={e => e.currentTarget.style.color='#ef4444'}
+                  onMouseLeave={e => e.currentTarget.style.color='#475569'}
+              >
+                  <Trash2 size={12} />
+              </button>
+          )}
       </div>
       {task.description && <p style={{ color:'#64748b', fontSize:12, margin:'0 0 8px', lineHeight:1.4 }}>{task.description}</p>}
       <div style={{ display:'flex', gap:6, flexWrap:'wrap', marginBottom:8 }}>

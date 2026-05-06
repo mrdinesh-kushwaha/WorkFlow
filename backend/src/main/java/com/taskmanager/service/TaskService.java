@@ -95,6 +95,15 @@ public class TaskService {
     public void deleteTask(Long taskId, User currentUser) {
         Task task = taskRepository.findById(taskId)
                 .orElseThrow(() -> new RuntimeException("Task not found"));
+
+        boolean isAdmin = currentUser.getRole() == User.Role.ADMIN;
+        boolean isCreator = task.getCreatedBy().getId().equals(currentUser.getId());
+
+        if (!isAdmin && !isCreator) {
+            throw new RuntimeException("Only admin or task creator can delete task");
+        }
+        task = taskRepository.findById(taskId)
+                .orElseThrow(() -> new RuntimeException("Task not found"));
         verifyProjectAccess(task.getProject(), currentUser);
         taskRepository.delete(task);
     }
