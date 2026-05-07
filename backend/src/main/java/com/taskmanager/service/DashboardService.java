@@ -6,6 +6,7 @@ import com.taskmanager.entity.User;
 import com.taskmanager.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -18,6 +19,7 @@ public class DashboardService {
     @Autowired private ProjectService projectService;
     @Autowired private TaskService taskService;
 
+    @Transactional(readOnly = true)
     public DashboardDTO getDashboard(User currentUser) {
         DashboardDTO dto = new DashboardDTO();
 

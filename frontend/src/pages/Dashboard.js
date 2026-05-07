@@ -31,21 +31,19 @@ const Dashboard = () => {
 
         try {
             const projectsRes = await projectAPI.getAll();
-            const dashboardRes = await dashboardAPI.get().catch(() => ({ data: {} }));
-
+            const dashboardRes = await dashboardAPI.get();
             const projects = Array.isArray(projectsRes.data) ? projectsRes.data : [];
-
-            const totalTasks = projects.reduce((sum, project) => {
-                return sum + (project.taskCount || 0);
-            }, 0);
 
             setData({
                 ...dashboardRes.data,
-                totalProjects: projects.length,
-                totalTasks: totalTasks,
-                recentProjects: projects.slice(0, 5)
+                totalProjects: dashboardRes.data?.totalProjects ?? projects.length,
+                totalTasks: dashboardRes.data?.totalTasks ?? 0,
+                inProgressTasks: dashboardRes.data?.inProgressTasks ?? 0,
+                doneTasks: dashboardRes.data?.doneTasks ?? 0,
+                overdueTasks: dashboardRes.data?.overdueTasks ?? 0,
+                recentTasks: dashboardRes.data?.recentTasks ?? [],
+                recentProjects: dashboardRes.data?.recentProjects ?? projects.slice(0, 5)
             });
-
         } catch (err) {
             console.error("Dashboard loading error:", err);
         } finally {
