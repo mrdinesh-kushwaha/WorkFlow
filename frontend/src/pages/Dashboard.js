@@ -31,21 +31,19 @@ const Dashboard = () => {
 
         try {
             const projectsRes = await projectAPI.getAll();
-            const dashboardRes = await dashboardAPI.get().catch(() => ({ data: {} }));
-
+            const dashboardRes = await dashboardAPI.get();
             const projects = Array.isArray(projectsRes.data) ? projectsRes.data : [];
-
-            const totalTasks = projects.reduce((sum, project) => {
-                return sum + (project.taskCount || 0);
-            }, 0);
 
             setData({
                 ...dashboardRes.data,
-                totalProjects: projects.length,
-                totalTasks: totalTasks,
-                recentProjects: projects.slice(0, 5)
+                totalProjects: dashboardRes.data?.totalProjects ?? projects.length,
+                totalTasks: dashboardRes.data?.totalTasks ?? 0,
+                inProgressTasks: dashboardRes.data?.inProgressTasks ?? 0,
+                doneTasks: dashboardRes.data?.doneTasks ?? 0,
+                overdueTasks: dashboardRes.data?.overdueTasks ?? 0,
+                recentTasks: dashboardRes.data?.recentTasks ?? [],
+                recentProjects: dashboardRes.data?.recentProjects ?? projects.slice(0, 5)
             });
-
         } catch (err) {
             console.error("Dashboard loading error:", err);
         } finally {
@@ -142,7 +140,7 @@ const Dashboard = () => {
                                 <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
                                     <div>
                                         <div style={{ color:'#f1f5f9', fontSize:14, fontWeight:500 }}>{p.name}</div>
-                                        <div style={{ color:'#64748b', fontSize:12, marginTop:2 }}>{p.taskCount} tasks · {p.members?.length} members</div>
+                                        <div style={{ color:'#64748b', fontSize:12, marginTop:2 }}>{p.taskCount} tasks</div>
                                     </div>
                                     <span style={{ padding:'2px 8px', borderRadius:20, fontSize:11, fontWeight:500, background:'#22c55e20', color:'#22c55e' }}>{p.status}</span>
                                 </div>

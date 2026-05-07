@@ -33,4 +33,11 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
 
     @Query("SELECT COUNT(t) FROM Task t WHERE t.assignee.id = :userId AND t.status = :status")
     long countTasksByStatusForUser(@Param("userId") Long userId, @Param("status") Task.Status status);
+
+    @Query("""
+    SELECT t FROM Task t
+    WHERE t.assignee.id = :userId
+    ORDER BY t.createdAt DESC
+""")
+    List<Task> findRecentTasksForUser(@Param("userId") Long userId);
 }
