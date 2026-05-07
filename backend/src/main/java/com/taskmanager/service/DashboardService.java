@@ -79,8 +79,21 @@ public class DashboardService {
 
         dto.setRecentTasks(recentTasks);
 
+        List<Task> userTasks = currentUser.getRole() == User.Role.ADMIN
+                ? taskRepository.findAll()
+                : taskRepository.findByAssignee(currentUser);
+
         dto.setRecentProjects(projects.stream()
                 .limit(5)
+                .peek(project -> {
+                    if (currentUser.getRole() != User.Role.ADMIN) {
+                        long assignedTaskCount = userTasks.stream()
+                                .filter(task -> task.getProject().getId().equals(project.getId()))
+                                .count();
+
+                        project.setTaskCount((int) assignedTaskCount);
+                    }
+                })
                 .collect(Collectors.toList()));
 
         return dto;
