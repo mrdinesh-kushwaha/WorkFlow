@@ -1,6 +1,12 @@
-# 🚀 TaskFlow - Team Task Manager
+# 🚀 TaskFlow — Team Task Management Platform
 
-A full-stack task management application with **Java Spring Boot** backend and **React** frontend, featuring role-based access control, project management, and real-time task tracking.
+A full-stack project management and collaboration platform built using Spring Boot and React that enables teams to manage projects, assign tasks, track progress, and monitor workflows efficiently.
+
+---
+
+🎯 Why This Project Created?
+
+Modern teams often struggle with scattered task tracking, missed deadlines, and lack of workflow visibility. TaskFlow solves these challenges through centralized project management, secure role-based collaboration, real-time task tracking, and automated overdue monitoring, improving team productivity, accountability, and execution efficiency.
 
 ---
 
@@ -10,9 +16,51 @@ A full-stack task management application with **Java Spring Boot** backend and *
 - 👥 **Role-Based Access** — `ADMIN` (full access) and `MEMBER` (project-scoped)
 - 📁 **Project Management** — Create, edit, delete projects; manage team members
 - ✅ **Task Management** — Create tasks, assign to members, track status & priority
-- 📊 **Dashboard** — Overview of all tasks, statuses, overdue items, and recent activity
-- ⚠️ **Overdue Detection** — Automatic overdue flagging for past-due tasks / Change auto when Done status (Current Time)
+- 📊 **📊 Real-time Dashboard & Task Status Tracking** — Overview of all tasks, statuses, overdue items, and recent activity
+- ⚠️ **Automatic Overdue Task Detection** — Automatic overdue flagging for past-due tasks / Change auto when Done status (Current Time)
 - 🗄️ **PostgreSQL on Railway** — Persistent database in production
+- 🚂 **Dockerized deployment on Railway**
+
+---
+
+## How it works
+
+### Signup Page
+
+<img width="959" height="446" alt="SignUp" src="https://github.com/user-attachments/assets/5b4b739e-5fbd-48d7-b9c8-631620a38b32" />
+
+### Login Page
+
+<img width="958" height="445" alt="LoginPage" src="https://github.com/user-attachments/assets/728b3329-ef22-485f-8279-03c7265df69d" />
+
+
+### Member DashBaord page
+
+<img width="958" height="440" alt="MemberDashboard" src="https://github.com/user-attachments/assets/c44050af-819c-4fd9-a2de-9d1b30cabcb3" />
+
+### Member Projects Page
+
+<img width="951" height="446" alt="MemberProject" src="https://github.com/user-attachments/assets/5aaea614-f630-4514-a993-a9f25e649f7f" />
+
+### Member Task Page
+
+<img width="959" height="441" alt="MemberTask" src="https://github.com/user-attachments/assets/b9b70ed5-0e9b-4505-873a-e979b3b38bde" />
+
+### Admin Dashboard page
+
+<img width="954" height="448" alt="AdminDashboard" src="https://github.com/user-attachments/assets/47724419-7b36-4d94-8bc1-d08f4626ec38" />
+
+### Admin Projects page
+
+<img width="956" height="446" alt="AdminProjects" src="https://github.com/user-attachments/assets/1f602647-30d5-4b75-9139-4d3585fcc764" />
+
+### Admin Task Page
+
+<img width="955" height="447" alt="AdminAdd toTask" src="https://github.com/user-attachments/assets/9c6d0777-0012-43ca-8927-5384c0d9d1a7" />
+
+### Admin Assigned Task Page
+
+<img width="956" height="446" alt="AdminAssignedTask" src="https://github.com/user-attachments/assets/fe63b5a2-040e-41ce-859e-a27a27a3404a" />
 
 ---
 
@@ -224,3 +272,6 @@ After signup, you can create an ADMIN by selecting "Admin" role during signup.
 **Sample workflow:**
 1. Sign up as Admin → Create project → Add members
 2. Sign up as Member → Get added to project → Assign & manage tasks
+
+## Author
+Developed by **Dinesh Kushwaha** 
