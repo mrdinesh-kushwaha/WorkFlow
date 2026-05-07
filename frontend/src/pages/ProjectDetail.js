@@ -137,7 +137,7 @@ const ProjectDetail = () => {
   if (loading) return <div style={{ padding:32, color:'#64748b' }}>Loading...</div>;
   if (!project) return null;
 
-  const isOwner = project.owner?.id === user?.id || isAdmin;
+  const canManage = isAdmin;
   const filteredTasks = filterStatus === 'ALL' ? tasks : tasks.filter(t => t.status === filterStatus);
   const tasksByStatus = STATUSES.reduce((acc, s) => { acc[s] = tasks.filter(t => t.status === s); return acc; }, {});
     const nonMembers = users.filter(u =>
@@ -158,12 +158,12 @@ const ProjectDetail = () => {
             <p style={{ color:'#64748b', fontSize:14, margin:0 }}>{project.description || 'No description'}</p>
           </div>
           <div style={{ display:'flex', gap:10 }}>
-            {isOwner && (
+              {canManage && (
               <button onClick={() => setShowMemberModal(true)} style={{ display:'flex', alignItems:'center', gap:6, padding:'9px 16px', background:'#1e293b', border:'1px solid #334155', borderRadius:8, color:'#94a3b8', cursor:'pointer', fontSize:13 }}>
                 <UserPlus size={14} /> Members
               </button>
             )}
-              {isOwner && (
+              {canManage && (
                   <button onClick={() => setShowTaskModal(true)} style={{ display:'flex', alignItems:'center', gap:6, padding:'9px 16px', background:'linear-gradient(135deg,#6366f1,#8b5cf6)', border:'none', borderRadius:8, color:'white', cursor:'pointer', fontSize:13, fontWeight:600 }}>
                       <Plus size={14} /> Add Task
                   </button>
@@ -216,7 +216,7 @@ const ProjectDetail = () => {
                       task={task}
                       onStatusChange={handleStatusChange}
                       onDelete={handleDeleteTask}
-                      canDelete={isOwner}
+                      canDelete={canManage}
                   />
               ))}
             </div>
@@ -238,7 +238,7 @@ const ProjectDetail = () => {
                   <div style={{ color:'#64748b', fontSize:12 }}>{member.email} · {member.role}</div>
                 </div>
               </div>
-              {isOwner && member.id !== project.owner?.id && (
+              {canManage && member.id !== project.owner?.id && (
                 <button onClick={() => handleRemoveMember(member.id)} style={{ background:'none', border:'1px solid #334155', borderRadius:6, color:'#ef4444', cursor:'pointer', padding:'4px 10px', fontSize:12 }}>Remove</button>
               )}
               {member.id === project.owner?.id && <span style={{ fontSize:11, color:'#6366f1', background:'#6366f120', padding:'3px 8px', borderRadius:20 }}>Owner</span>}

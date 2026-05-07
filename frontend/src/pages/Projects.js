@@ -63,16 +63,21 @@ const Projects = () => {
           <h1 style={{ color:'#f1f5f9', fontSize:24, fontWeight:700, margin:0, letterSpacing:'-0.5px' }}>Projects</h1>
           <p style={{ color:'#64748b', fontSize:14, marginTop:4 }}>{projects.length} project{projects.length !== 1 ? 's' : ''}</p>
         </div>
-        <button onClick={() => setShowCreate(true)} style={{ display:'flex', alignItems:'center', gap:8, padding:'10px 18px', background:'linear-gradient(135deg,#6366f1,#8b5cf6)', border:'none', borderRadius:8, color:'white', fontSize:14, fontWeight:600, cursor:'pointer' }}>
-          <Plus size={16} /> New Project
-        </button>
+          {user?.role === 'ADMIN' && (
+              <button onClick={() => setShowCreate(true)} style={{ display:'flex', alignItems:'center', gap:8, padding:'10px 18px', background:'linear-gradient(135deg,#6366f1,#8b5cf6)', border:'none', borderRadius:8, color:'white', fontSize:14, fontWeight:600, cursor:'pointer' }}>
+                  <Plus size={16} /> New Project
+              </button>
+          )}
       </div>
 
       {projects.length === 0 ? (
-        <div style={{ textAlign:'center', padding:'60px 0', color:'#475569' }}>
-          <FolderKanban size={48} style={{ marginBottom:16, opacity:0.3 }} />
-          <p>No projects yet. Create your first project!</p>
-        </div>
+          <div>
+              <p>
+                  {user?.role === 'ADMIN'
+                      ? 'No projects yet. Create your first project!'
+                      : 'No projects assigned yet.'}
+              </p>
+          </div>
       ) : (
         <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill, minmax(300px, 1fr))', gap:16 }}>
           {projects.map(p => (

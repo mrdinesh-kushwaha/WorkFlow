@@ -87,11 +87,10 @@ public class ProjectService {
 
         if (currentUser.getRole() == User.Role.ADMIN) return project;
 
-        boolean hasAssignedTask = project.getTasks().stream()
-                .anyMatch(t -> t.getAssignee() != null &&
-                        t.getAssignee().getId().equals(currentUser.getId()));
+        boolean isMember = project.getMembers().stream()
+                .anyMatch(m -> m.getId().equals(currentUser.getId()));
 
-        if (!hasAssignedTask) {
+        if (!isMember) {
             throw new RuntimeException("Access denied");
         }
 

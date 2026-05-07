@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import java.util.List;
 import java.util.Map;
@@ -39,6 +40,7 @@ public class TaskController {
         return ResponseEntity.ok(taskService.getTask(taskId, getCurrentUser(ud)));
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/projects/{projectId}/tasks")
     public ResponseEntity<TaskDTO> createTask(@PathVariable Long projectId,
                                                @Valid @RequestBody TaskRequest request,
@@ -46,6 +48,7 @@ public class TaskController {
         return ResponseEntity.ok(taskService.createTask(projectId, request, getCurrentUser(ud)));
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/tasks/{taskId}")
     public ResponseEntity<TaskDTO> updateTask(@PathVariable Long taskId,
                                                @Valid @RequestBody TaskRequest request,
@@ -61,6 +64,7 @@ public class TaskController {
         return ResponseEntity.ok(taskService.updateTaskStatus(taskId, status, getCurrentUser(ud)));
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/tasks/{taskId}")
     public ResponseEntity<Void> deleteTask(@PathVariable Long taskId,
                                             @AuthenticationPrincipal UserDetails ud) {
