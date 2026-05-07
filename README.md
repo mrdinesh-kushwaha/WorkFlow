@@ -11,7 +11,7 @@ A full-stack task management application with **Java Spring Boot** backend and *
 - 📁 **Project Management** — Create, edit, delete projects; manage team members
 - ✅ **Task Management** — Create tasks, assign to members, track status & priority
 - 📊 **Dashboard** — Overview of all tasks, statuses, overdue items, and recent activity
-- ⚠️ **Overdue Detection** — Automatic overdue flagging for past-due tasks
+- ⚠️ **Overdue Detection** — Automatic overdue flagging for past-due tasks / Change auto when Done status (Current Time)
 - 🗄️ **PostgreSQL on Railway** — Persistent database in production
 
 ---
@@ -191,15 +191,15 @@ docker run -p 8080:8080 \
 
 ## 🔐 Role-Based Access Control
 
-| Action                    | ADMIN | MEMBER (owner) | MEMBER (other) |
-|---------------------------|-------|----------------|----------------|
-| See all projects          | ✅    | ❌             | ❌             |
-| Create project            | ✅    | ✅             | ✅             |
-| Edit/Delete own project   | ✅    | ✅             | ❌             |
-| Add/Remove members        | ✅    | ✅             | ❌             |
-| Create tasks              | ✅    | ✅             | ✅ (member)    |
-| Delete/Edit tasks         | ✅    | ✅             | ✅ (member)    |
-| Update task status        | ✅    | ✅             | ✅ (member)    |
+| Action                    | ADMIN | MEMBERS 
+|---------------------------|-------|----------------
+| See all projects          | ✅    | ❌             | 
+| Create project            | ✅    | ❌             | 
+| Edit/Delete own project   | ✅    | ❌             | 
+| Add/Remove members        | ✅    | ❌             | 
+| Create tasks              | ✅    | ❌             | 
+| Delete/Edit tasks         | ✅    | ❌             | 
+| Update task status        | ✅    | ✅             | 
 
 ---
 
