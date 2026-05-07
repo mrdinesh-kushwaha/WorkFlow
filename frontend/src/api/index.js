@@ -50,6 +50,7 @@ export const taskAPI = {
   updateStatus: (taskId, status) => api.patch(`/tasks/${taskId}/status`, { status }),
   delete: (taskId) => api.delete(`/tasks/${taskId}`),
   myTasks: () => api.get('/tasks/my'),
+    assignedTasks: () => api.get('/tasks/assigned'),
 };
 
 export const dashboardAPI = {

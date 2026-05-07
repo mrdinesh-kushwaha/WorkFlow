@@ -76,4 +76,9 @@ public class TaskController {
     public ResponseEntity<List<TaskDTO>> getMyTasks(@AuthenticationPrincipal UserDetails ud) {
         return ResponseEntity.ok(taskService.getMyTasks(getCurrentUser(ud)));
     }
+
+    @GetMapping("/tasks/assigned")
+    public ResponseEntity<List<TaskDTO>> getAssignedTasks(@AuthenticationPrincipal UserDetails ud) {
+        return ResponseEntity.ok(taskService.getAssignedTasks(getCurrentUser(ud)));
+    }
 }

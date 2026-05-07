@@ -13,7 +13,7 @@ const Layout = () => {
   const navItems = [
     { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
     { to: '/projects', icon: FolderKanban, label: 'Projects' },
-    { to: '/my-tasks', icon: CheckSquare, label: 'My Tasks' },
+      { to: '/my-tasks', icon: CheckSquare, label: isAdmin ? 'Assigned Tasks' : 'My Tasks' },
   ];
 
   return (
