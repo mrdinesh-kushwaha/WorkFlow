@@ -3,8 +3,10 @@ package com.taskmanager.service;
 import com.taskmanager.dto.DTOs.*;
 import com.taskmanager.entity.Project;
 import com.taskmanager.entity.User;
+import com.taskmanager.entity.Task;
 import com.taskmanager.repository.ProjectRepository;
 import com.taskmanager.repository.UserRepository;
+import com.taskmanager.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,21 +20,26 @@ public class ProjectService {
 
     @Autowired private ProjectRepository projectRepository;
     @Autowired private UserRepository userRepository;
+    @Autowired private TaskRepository taskRepository;
     @Autowired private AuthService authService;
 
     public List<ProjectDTO> getMyProjects(User currentUser) {
         List<Project> projects;
+
         if (currentUser.getRole() == User.Role.ADMIN) {
             projects = projectRepository.findAll();
         } else {
             projects = projectRepository.findAllAccessibleByUser(currentUser.getId());
         }
-        return projects.stream().map(this::toProjectDTO).collect(Collectors.toList());
+
+        return projects.stream()
+                .map(project -> toProjectDTO(project, currentUser))
+                .collect(Collectors.toList());
     }
 
     public ProjectDTO getProject(Long id, User currentUser) {
         Project project = findAndVerifyAccess(id, currentUser);
-        return toProjectDTO(project);
+        return toProjectDTO(project, currentUser);
     }
 
     public ProjectDTO createProject(ProjectRequest request, User currentUser) {
@@ -90,7 +97,13 @@ public class ProjectService {
         boolean isMember = project.getMembers().stream()
                 .anyMatch(m -> m.getId().equals(currentUser.getId()));
 
-        if (!isMember) {
+        boolean hasAssignedTask = taskRepository.findByProjectId(project.getId()).stream()
+                .anyMatch(task ->
+                        task.getAssignee() != null &&
+                                task.getAssignee().getId().equals(currentUser.getId())
+                );
+
+        if (!isMember && !hasAssignedTask) {
             throw new RuntimeException("Access denied");
         }
 
@@ -118,6 +131,24 @@ public class ProjectService {
                 .map(authService::toUserDTO).collect(Collectors.toList()));
         dto.setTaskCount(project.getTasks() != null ? project.getTasks().size() : 0);
         dto.setCreatedAt(project.getCreatedAt());
+        return dto;
+    }
+
+    public ProjectDTO toProjectDTO(Project project, User currentUser) {
+        ProjectDTO dto = toProjectDTO(project);
+
+        if (currentUser.getRole() != User.Role.ADMIN) {
+            long assignedTaskCount = project.getTasks() == null ? 0 :
+                    project.getTasks().stream()
+                            .filter(task ->
+                                    task.getAssignee() != null &&
+                                            task.getAssignee().getId().equals(currentUser.getId())
+                            )
+                            .count();
+
+            dto.setTaskCount((int) assignedTaskCount);
+        }
+
         return dto;
     }
 }

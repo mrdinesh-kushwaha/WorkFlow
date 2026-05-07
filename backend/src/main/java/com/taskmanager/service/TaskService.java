@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -119,6 +120,13 @@ public class TaskService {
         }
 
         task.setStatus(status);
+
+        if (status == Task.Status.DONE && task.getCompletedAt() == null) {
+            task.setCompletedAt(LocalDateTime.now());
+        } else if (status != Task.Status.DONE) {
+            task.setCompletedAt(null);
+        }
+
         return toTaskDTO(taskRepository.save(task));
     }
 
@@ -143,11 +151,31 @@ public class TaskService {
                 .map(this::toTaskDTO).collect(Collectors.toList());
     }
 
+    public List<TaskDTO> getAssignedTasks(User currentUser) {
+        if (currentUser.getRole() != User.Role.ADMIN) {
+            throw new RuntimeException("Only admin can view assigned tasks");
+        }
+
+        return taskRepository.findByAssigneeIsNotNull().stream()
+                .map(this::toTaskDTO)
+                .collect(Collectors.toList());
+    }
+
     private void verifyProjectAccess(Project project, User currentUser) {
         if (currentUser.getRole() == User.Role.ADMIN) return;
-        boolean hasAccess = project.getOwner().getId().equals(currentUser.getId()) ||
-                project.getMembers().stream().anyMatch(m -> m.getId().equals(currentUser.getId()));
-        if (!hasAccess) throw new RuntimeException("Access denied to this project");
+
+        boolean isMember = project.getMembers().stream()
+                .anyMatch(m -> m.getId().equals(currentUser.getId()));
+
+        boolean hasAssignedTask = project.getTasks().stream()
+                .anyMatch(task ->
+                        task.getAssignee() != null &&
+                                task.getAssignee().getId().equals(currentUser.getId())
+                );
+
+        if (!isMember && !hasAssignedTask) {
+            throw new RuntimeException("Access denied to this project");
+        }
     }
 
     public TaskDTO toTaskDTO(Task task) {
@@ -164,6 +192,7 @@ public class TaskService {
         dto.setProjectId(task.getProject().getId());
         dto.setProjectName(task.getProject().getName());
         dto.setCreatedAt(task.getCreatedAt());
+        dto.setCompletedAt(task.getCompletedAt());
         return dto;
     }
 }

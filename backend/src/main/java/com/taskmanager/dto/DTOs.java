@@ -99,6 +99,7 @@ public class DTOs {
         private Long projectId;
         private String projectName;
         private LocalDateTime createdAt;
+        private LocalDateTime completedAt;
     }
 
     // Dashboard DTO

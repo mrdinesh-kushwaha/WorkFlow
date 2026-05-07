@@ -35,6 +35,8 @@ public class Task {
 
     private LocalDate dueDate;
 
+    private LocalDateTime completedAt;
+
     @Column(updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();
 
