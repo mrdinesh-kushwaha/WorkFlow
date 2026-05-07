@@ -36,16 +36,41 @@ public class DashboardService {
             List<Task> overdueTasks = taskRepository.findAllOverdueTasks(LocalDate.now());
             dto.setOverdueTasks(overdueTasks.size());
         } else {
-            dto.setTotalTasks(taskRepository.countTasksForUser(currentUser.getId()));
-            dto.setTodoTasks(taskRepository.countTasksByStatusForUser(currentUser.getId(), Task.Status.TODO));
-            dto.setInProgressTasks(taskRepository.countTasksByStatusForUser(currentUser.getId(), Task.Status.IN_PROGRESS));
-            dto.setDoneTasks(taskRepository.countTasksByStatusForUser(currentUser.getId(), Task.Status.DONE));
 
-            List<Task> overdueTasks = taskRepository.findOverdueTasksForUser(currentUser.getId(), LocalDate.now());
-            dto.setOverdueTasks(overdueTasks.size());
+            List<Task> userTasks = taskRepository.findByAssignee(currentUser);
+
+            dto.setTotalTasks(userTasks.size());
+
+            dto.setTodoTasks(
+                    userTasks.stream()
+                            .filter(t -> t.getStatus() == Task.Status.TODO)
+                            .count()
+            );
+
+            dto.setInProgressTasks(
+                    userTasks.stream()
+                            .filter(t -> t.getStatus() == Task.Status.IN_PROGRESS)
+                            .count()
+            );
+
+            dto.setDoneTasks(
+                    userTasks.stream()
+                            .filter(t -> t.getStatus() == Task.Status.DONE)
+                            .count()
+            );
+
+            dto.setOverdueTasks(
+                    userTasks.stream()
+                            .filter(t ->
+                                    t.getDueDate() != null &&
+                                            t.getDueDate().isBefore(LocalDate.now()) &&
+                                            t.getStatus() != Task.Status.DONE
+                            )
+                            .count()
+            );
         }
 
-        List<TaskDTO> recentTasks = taskRepository.findByAssignee(currentUser).stream()
+        List<TaskDTO> recentTasks = taskRepository.findRecentTasksForUser(currentUser.getId()).stream()
                 .limit(5)
                 .map(taskService::toTaskDTO)
                 .collect(Collectors.toList());
