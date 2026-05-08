@@ -26,18 +26,46 @@ const Login = () => {
     <div style={{ minHeight:'100dvh', background:'#0f172a', display:'flex', alignItems:'center', justifyContent:'center', padding:20 }}>
       <div style={{ width:'100%', maxWidth:420 }}>
         <div style={{ textAlign:'center', marginBottom:32 }}>
-          <div style={{
-            width:58,
-            height:58,
-            background:'linear-gradient(135deg,#6366f1,#8b5cf6)',
-            borderRadius:16,
-            display:'inline-flex',
-            alignItems:'center',
-            justifyContent:'center',
-            marginBottom:16,
-            boxShadow:'0 12px 35px rgba(99,102,241,0.35)'
-          }}>
-            <CheckSquare size={28} color="#fff" strokeWidth={2.4} />
+          <div
+              style={{
+                position:'relative',
+                width:72,
+                height:72,
+                margin:'0 auto 20px',
+              }}
+          >
+            <div
+                style={{
+                  position:'absolute',
+                  inset:0,
+                  borderRadius:22,
+                  background:'linear-gradient(135deg,#6366f1,#8b5cf6)',
+                  boxShadow:'0 20px 50px rgba(99,102,241,0.45)',
+                  transform:'rotate(-6deg)',
+                  opacity:0.9
+                }}
+            />
+
+            <div
+                style={{
+                  position:'absolute',
+                  inset:0,
+                  borderRadius:22,
+                  background:'rgba(30,41,59,0.92)',
+                  border:'1px solid rgba(255,255,255,0.08)',
+                  backdropFilter:'blur(12px)',
+                  display:'flex',
+                  alignItems:'center',
+                  justifyContent:'center',
+                  transform:'rotate(0deg)',
+                }}
+            >
+              <CheckSquare
+                  size={34}
+                  color="#8b5cf6"
+                  strokeWidth={2.5}
+              />
+            </div>
           </div>
           <h1 style={{ color:'#f1f5f9', fontSize:26, fontWeight:700, margin:0, letterSpacing:'-0.5px' }}>Welcome back</h1>
           <p style={{ color:'#64748b', marginTop:8, fontSize:14 }}>Sign in to your TaskFlow account</p>
