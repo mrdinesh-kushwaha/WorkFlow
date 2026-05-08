@@ -72,10 +72,20 @@ public class DashboardService {
             );
         }
 
-        List<TaskDTO> recentTasks = taskRepository.findRecentTasksForUser(currentUser.getId()).stream()
-                .limit(5)
-                .map(taskService::toTaskDTO)
-                .collect(Collectors.toList());
+        List<TaskDTO> recentTasks;
+
+        if (currentUser.getRole() == User.Role.ADMIN) {
+            recentTasks = taskRepository.findAll().stream()
+                    .sorted((a, b) -> b.getCreatedAt().compareTo(a.getCreatedAt()))
+                    .limit(5)
+                    .map(taskService::toTaskDTO)
+                    .collect(Collectors.toList());
+        } else {
+            recentTasks = taskRepository.findRecentTasksForUser(currentUser.getId()).stream()
+                    .limit(5)
+                    .map(taskService::toTaskDTO)
+                    .collect(Collectors.toList());
+        }
 
         dto.setRecentTasks(recentTasks);
 

@@ -39,7 +39,7 @@ const MyTasks = () => {
     const filtered = filterStatus === 'ALL' ? tasks : tasks.filter(t => t.status === filterStatus);
 
     return (
-        <div style={{ padding:32, maxWidth:isAdmin ? 1200 : 900 }}>
+        <div style={{ padding: window.innerWidth <= 768 ? '72px 16px 16px' : 32, maxWidth:isAdmin ? 1200 : 900, width:'100%', boxSizing:'border-box', overflowX:'hidden' }}>
             <div style={{ marginBottom:28 }}>
                 <h1 style={{ color:'#f1f5f9', fontSize:24, fontWeight:700, margin:0, letterSpacing:'-0.5px' }}>
                     {isAdmin ? 'Assigned Tasks' : 'My Tasks'}
@@ -61,12 +61,12 @@ const MyTasks = () => {
                 </div>
             )}
 
-            <div style={{ display:'flex', gap:8, marginBottom:20 }}>
+            <div style={{ display:'flex', gap:8, marginBottom:20, overflowX:'auto', paddingBottom:6 }}>
                 {['ALL', ...STATUSES].map(s => (
-                    <button key={s} onClick={() => setFilterStatus(s)} style={{ padding:'5px 14px', borderRadius:20, fontSize:12, fontWeight:500, border:'1px solid', borderColor:filterStatus === s ? '#6366f1' : '#334155', background:filterStatus === s ? '#6366f120' : 'transparent', color:filterStatus === s ? '#818cf8' : '#64748b', cursor:'pointer' }}>
+                    <button key={s} onClick={() => setFilterStatus(s)} style={{ padding:'5px 14px', borderRadius:20, fontSize:12, fontWeight:500, border:'1px solid', borderColor:filterStatus === s ? '#6366f1' : '#334155', background:filterStatus === s ? '#6366f120' : 'transparent', color:filterStatus === s ? '#818cf8' : '#64748b', cursor:'pointer', whiteSpace:'nowrap', flexShrink:0 }}>
                         {s.replace('_',' ')} {s !== 'ALL' && `(${tasks.filter(t => t.status === s).length})`}
                     </button>
-                ))}
+                ))}f
             </div>
 
             {filtered.length === 0 ? (
@@ -116,7 +116,18 @@ const MyTasks = () => {
                                 </td>
 
                                 <td style={{ padding:'12px 14px', color:'#94a3b8', fontSize:13 }}>
-                                    {task.completedAt ? new Date(task.completedAt).toLocaleString() : '-'}
+                                    {task.completedAt ? new Date(task.completedAt)
+                                        .toLocaleString('en-IN', {
+                                            day: '2-digit',
+                                            month: '2-digit',
+                                            year: 'numeric',
+                                            hour: '2-digit',
+                                            minute: '2-digit',
+                                            second: '2-digit',
+                                            hour12: true
+                                        })
+                                        .replace('am', 'AM')
+                                        .replace('pm', 'PM'): '-'}
                                 </td>
                             </tr>
                         ))}
@@ -127,7 +138,7 @@ const MyTasks = () => {
                 <div style={{ display:'flex', flexDirection:'column', gap:8 }}>
                     {filtered.map(task => (
                         <div key={task.id} style={{ background:'#1e293b', border:`1px solid ${task.overdue ? '#ef444430' : '#334155'}`, borderRadius:12, padding:'16px 20px' }}>
-                            <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', gap:12 }}>
+                            <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', gap:12, flexDirection: window.innerWidth <= 480 ? 'column' : 'row' }}>
                                 <div style={{ flex:1 }}>
                                     <div style={{ display:'flex', alignItems:'center', gap:8, marginBottom:6 }}>
                                         <span style={{ color:'#f1f5f9', fontSize:15, fontWeight:500 }}>{task.title}</span>
@@ -150,7 +161,7 @@ const MyTasks = () => {
                                 </div>
 
                                 <select value={task.status} onChange={e => handleStatusChange(task.id, e.target.value)}
-                                        style={{ padding:'6px 10px', background:'#0f172a', border:'1px solid #334155', borderRadius:8, color:statusColors[task.status], fontSize:12, cursor:'pointer', outline:'none', flexShrink:0 }}>
+                                        style={{ padding:'6px 10px', background:'#0f172a', border:'1px solid #334155', borderRadius:8, color:statusColors[task.status], fontSize:12, cursor:'pointer', outline:'none', flexShrink:0, width: window.innerWidth <= 480 ? '100%' : 'auto' }}>
                                     {STATUSES.map(s => <option key={s} value={s}>{s.replace('_',' ')}</option>)}
                                 </select>
                             </div>

@@ -20,7 +20,7 @@ const StatCard = ({ label, value, color, icon: Icon }) => (
 );
 
 const Dashboard = () => {
-    const { user } = useAuth();
+    const { user, isAdmin } = useAuth();
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [refreshing, setRefreshing] = useState(false);
@@ -60,10 +60,10 @@ const Dashboard = () => {
     if (loading) return <div style={{ padding:32, color:'#64748b', fontSize:14 }}>Loading dashboard...</div>;
 
     return (
-        <div style={{ padding:32, maxWidth:1200 }}>
+        <div style={{ padding: window.innerWidth <= 768 ? 16 : 32, maxWidth:1200, width:'100%', boxSizing:'border-box', overflowX:'hidden' }}>
 
             {/* Header + Refresh Button */}
-            <div style={{ marginBottom:32, display:'flex', justifyContent:'space-between', alignItems:'flex-start' }}>
+            <div style={{ marginBottom:32, display:'flex', justifyContent:'space-between', alignItems:'flex-start', gap:12, flexWrap:'wrap' }}>
                 <div>
                     <h1 style={{ color:'#f1f5f9', fontSize:24, fontWeight:700, margin:0, letterSpacing:'-0.5px' }}>
                         Good day, {user?.name?.split(' ')[0]} 👋
@@ -90,18 +90,22 @@ const Dashboard = () => {
             </div>
 
             {/* Recent Tasks + Recent Projects */}
-            <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:24 }}>
+            <div style={{ display:'grid', gridTemplateColumns: window.innerWidth <= 768 ? '1fr' : '1fr 1fr', gap:24 }}>
 
                 {/* Recent Tasks */}
                 <div style={{ background:'#1e293b', border:'1px solid #334155', borderRadius:12, padding:24 }}>
                     <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:20 }}>
-                        <h2 style={{ color:'#f1f5f9', fontSize:16, fontWeight:600, margin:0 }}>My Recent Tasks</h2>
+                        <h2 style={{ color:'#f1f5f9', fontSize:16, fontWeight:600, margin:0 }}>
+                            {isAdmin ? 'Recently Assigned Tasks' : 'My Recent Tasks'}
+                        </h2>
                         <Link to="/my-tasks" style={{ color:'#6366f1', fontSize:13, textDecoration:'none', display:'flex', alignItems:'center', gap:4 }}>
                             View all <ArrowRight size={14} />
                         </Link>
                     </div>
                     {!data?.recentTasks?.length ? (
-                        <p style={{ color:'#475569', fontSize:13, textAlign:'center', padding:'24px 0' }}>No tasks assigned yet</p>
+                        <p style={{ color:'#475569', fontSize:13, textAlign:'center', padding:'24px 0' }}>
+                            {isAdmin ? 'No assigned tasks yet' : 'No tasks assigned yet'}
+                        </p>
                     ) : (
                         data.recentTasks.map(task => (
                             <div key={task.id} style={{ padding:'12px 0', borderBottom:'1px solid #334155' }}>
