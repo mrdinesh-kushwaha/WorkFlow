@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { CheckSquare } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
@@ -25,7 +26,19 @@ const Login = () => {
     <div style={{ minHeight:'100dvh', background:'#0f172a', display:'flex', alignItems:'center', justifyContent:'center', padding:20 }}>
       <div style={{ width:'100%', maxWidth:420 }}>
         <div style={{ textAlign:'center', marginBottom:32 }}>
-          <div style={{ width:48, height:48, background:'linear-gradient(135deg,#6366f1,#8b5cf6)', borderRadius:12, display:'inline-flex', alignItems:'center', justifyContent:'center', fontSize:22, fontWeight:700, marginBottom:16 }}>T</div>
+          <div style={{
+            width:58,
+            height:58,
+            background:'linear-gradient(135deg,#6366f1,#8b5cf6)',
+            borderRadius:16,
+            display:'inline-flex',
+            alignItems:'center',
+            justifyContent:'center',
+            marginBottom:16,
+            boxShadow:'0 12px 35px rgba(99,102,241,0.35)'
+          }}>
+            <CheckSquare size={28} color="#fff" strokeWidth={2.4} />
+          </div>
           <h1 style={{ color:'#f1f5f9', fontSize:26, fontWeight:700, margin:0, letterSpacing:'-0.5px' }}>Welcome back</h1>
           <p style={{ color:'#64748b', marginTop:8, fontSize:14 }}>Sign in to your TaskFlow account</p>
         </div>
@@ -55,9 +68,9 @@ const Login = () => {
             </p>
           </div>
 
-          <div style={{ marginTop:16, padding:'12px', background:'#0f172a', borderRadius:8, border:'1px solid #334155' }}>
-            <p style={{ color:'#64748b', fontSize:12, margin:0, textAlign:'center' }}>Demo: signup with any email to get started</p>
-          </div>
+          {/*<div style={{ marginTop:16, padding:'12px', background:'#0f172a', borderRadius:8, border:'1px solid #334155' }}>*/}
+          {/*  /!*<p style={{ color:'#64748b', fontSize:12, margin:0, textAlign:'center' }}>Demo: signup with any email to get started</p>*!/*/}
+          {/*</div>*/}
         </div>
       </div>
     </div>
