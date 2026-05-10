@@ -9,6 +9,8 @@ import Dashboard from './pages/Dashboard';
 import Projects from './pages/Projects';
 import ProjectDetail from './pages/ProjectDetail';
 import MyTasks from './pages/MyTasks';
+import OAuthSuccess from './pages/OAuthSuccess';
+import LandingPage from "./pages/LandingPage";
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth();
@@ -32,10 +34,13 @@ function App() {
           error: { iconTheme: { primary: '#ef4444', secondary: '#0f172a' } },
         }} />
         <Routes>
+          <Route path="/" element={<PublicRoute><LandingPage /></PublicRoute>} />
+
           <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
           <Route path="/signup" element={<PublicRoute><Signup /></PublicRoute>} />
+          <Route path="/oauth-success" element={<OAuthSuccess />} />
+
           <Route path="/" element={<PrivateRoute><Layout /></PrivateRoute>}>
-            <Route index element={<Navigate to="/dashboard" replace />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="projects" element={<Projects />} />
             <Route path="projects/:id" element={<ProjectDetail />} />

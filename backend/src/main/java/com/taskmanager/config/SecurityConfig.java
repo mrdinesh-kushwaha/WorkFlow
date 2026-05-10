@@ -31,6 +31,9 @@ public class SecurityConfig {
     @Autowired
     private JwtAuthFilter jwtAuthFilter;
 
+    @Autowired
+    private com.taskmanager.security.OAuth2SuccessHandler oAuth2SuccessHandler;
+
     @Value("${cors.allowed-origins:http://localhost:3000}")
     private String allowedOrigins;
 
@@ -61,7 +64,10 @@ public class SecurityConfig {
                         .anyRequest().permitAll()
                 )
             .headers(headers -> headers.frameOptions(fo -> fo.disable()))
-            .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+                .oauth2Login(oauth -> oauth
+                        .successHandler(oAuth2SuccessHandler)
+                )
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
