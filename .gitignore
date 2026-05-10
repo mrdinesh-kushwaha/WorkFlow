@@ -24,3 +24,9 @@ Thumbs.db
 # Logs
 *.log
 logs/
+
+# Local secrets
+backend/src/main/resources/application-dev.properties
+backend/src/main/resources/application-local.properties
+backend/.env
+.env

@@ -32,13 +32,15 @@ public class User {
     private String email;
 
     @JsonIgnore
-    @NotBlank
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String password;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role = Role.MEMBER;
+
+    private String provider;
+    private String providerId;
 
     @Column(updatable = false)
     private LocalDateTime createdAt = LocalDateTime.now();

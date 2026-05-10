@@ -38,6 +38,20 @@ export const AuthProvider = ({ children }) => {
     return res.data;
   };
 
+  const handleOAuthLogin = (token) => {
+    localStorage.setItem('token', token);
+
+    authAPI.me()
+        .then(res => {
+          localStorage.setItem('user', JSON.stringify(res.data));
+          setUser(res.data);
+        })
+        .catch(() => {
+          localStorage.removeItem('token');
+          localStorage.removeItem('user');
+        });
+  };
+
   const logout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
@@ -45,7 +59,15 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, signup, logout, loading, isAdmin: user?.role === 'ADMIN' }}>
+      <AuthContext.Provider value={{
+        user,
+        login,
+        signup,
+        logout,
+        loading,
+        handleOAuthLogin,
+        isAdmin: user?.role === 'ADMIN'
+      }}>
       {children}
     </AuthContext.Provider>
   );
