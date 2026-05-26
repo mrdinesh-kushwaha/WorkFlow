@@ -17,7 +17,7 @@
 
 <br />
 
-[Live Demo](https://taskflow-platform-production.up.railway.app/) · [Application Preview](#application-preview) · [Report Bug](../../issues) · [Request Feature](../../issues) · [Documentation](#-rest-api-reference)
+[Live Demo](https://taskflow-platform-production.up.railway.app/) · [Application Preview](#-application-preview) · [Report Bug](../../issues) · [Request Feature](../../issues) · [Documentation](#-rest-api-reference)
 
 
 </div>
