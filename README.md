@@ -53,7 +53,7 @@
 
 | Signup | Login |
 |--------|-------|
-| ![Signup](https://github.com/user-attachments/assets/aa91e01d-524b-4649-9a90-ed7428945418) | ![Login](https://github.com/user-attachments/assets/728b3329-ef22-485f-8279-03c7265df69d) |
+| ![Signup](https://github.com/user-attachments/assets/aa91e01d-524b-4649-9a90-ed7428945418) | ![Login](https://github.com/user-attachments/assets/e1596b3f-6773-4d6c-9703-353853838215) |
 
 ---
 
@@ -315,7 +315,7 @@ To trigger a manual deploy, click **"Deploy"** in the Railway dashboard.
 Developed with ❤️ by **Dinesh Kushwaha**
 
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat-square&logo=github&logoColor=white)](https://github.com/)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mrdinesh-kushwaha/)
 
 ---
 
