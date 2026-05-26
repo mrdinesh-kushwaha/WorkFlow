@@ -17,7 +17,8 @@
 
 <br />
 
-[Live Demo](https://taskflow-platform-production.up.railway.app/) · [Report Bug](../../issues) · [Request Feature](../../issues) · [Documentation](#-rest-api-reference)
+[Live Demo](https://taskflow-platform-production.up.railway.app/) · [Application Preview](#-application-preview) · [Report Bug](../../issues) · [Request Feature](../../issues) · [Documentation](#-rest-api-reference)
+
 
 </div>
 
@@ -46,49 +47,42 @@
 
 ---
 
-## 🖼️ Screenshots
+## 🖼️ Application Preview
 
-<details>
-<summary><strong>🔑 Authentication</strong></summary>
-<br>
+### 🔑 Authentication
 
-**Signup Page**
-<img width="959" alt="SignUp" src="https://github.com/user-attachments/assets/5b4b739e-5fbd-48d7-b9c8-631620a38b32" />
+| Signup | Login |
+|--------|-------|
+| ![Signup](https://github.com/user-attachments/assets/5b4b739e-5fbd-48d7-b9c8-631620a38b32) | ![Login](https://github.com/user-attachments/assets/728b3329-ef22-485f-8279-03c7265df69d) |
 
-**Login Page**
-<img width="958" alt="LoginPage" src="https://github.com/user-attachments/assets/728b3329-ef22-485f-8279-03c7265df69d" />
-</details>
+---
 
-<details>
-<summary><strong>👤 Member Views</strong></summary>
-<br>
+### 👤 Member Experience
 
-**Member Dashboard**
-<img width="958" alt="MemberDashboard" src="https://github.com/user-attachments/assets/c44050af-819c-4fd9-a2de-9d1b30cabcb3" />
+**Dashboard — Personal task overview with status & activity feed**
+![Member Dashboard](https://github.com/user-attachments/assets/c44050af-819c-4fd9-a2de-9d1b30cabcb3)
 
-**Member Projects**
-<img width="951" alt="MemberProject" src="https://github.com/user-attachments/assets/5aaea614-f630-4514-a993-a9f25e649f7f" />
+**Projects — Browse and access assigned projects**
+![Member Projects](https://github.com/user-attachments/assets/5aaea614-f630-4514-a993-a9f25e649f7f)
 
-**Member Tasks**
-<img width="959" alt="MemberTask" src="https://github.com/user-attachments/assets/b9b70ed5-0e9b-4505-873a-e979b3b38bde" />
-</details>
+**Tasks — View, filter, and update task status**
+![Member Tasks](https://github.com/user-attachments/assets/b9b70ed5-0e9b-4505-873a-e979b3b38bde)
 
-<details>
-<summary><strong>🛡️ Admin Views</strong></summary>
-<br>
+---
 
-**Admin Dashboard**
-<img width="954" alt="AdminDashboard" src="https://github.com/user-attachments/assets/47724419-7b36-4d94-8bc1-d08f4626ec38" />
+### 🛡️ Admin Experience
 
-**Admin Projects**
-<img width="956" alt="AdminProjects" src="https://github.com/user-attachments/assets/1f602647-30d5-4b75-9139-4d3585fcc764" />
+**Dashboard — Full team analytics, overdue monitoring & activity log**
+![Admin Dashboard](https://github.com/user-attachments/assets/47724419-7b36-4d94-8bc1-d08f4626ec38)
 
-**Admin Task Management**
-<img width="955" alt="AdminAddTask" src="https://github.com/user-attachments/assets/9c6d0777-0012-43ca-8927-5384c0d9d1a7" />
+**Projects — Create and manage all team projects**
+![Admin Projects](https://github.com/user-attachments/assets/1f602647-30d5-4b75-9139-4d3585fcc764)
 
-**Admin Assigned Tasks**
-<img width="956" alt="AdminAssignedTask" src="https://github.com/user-attachments/assets/fe63b5a2-040e-41ce-859e-a27a27a3404a" />
-</details>
+**Task Management — Create tasks, set priority and deadlines**
+![Admin Task Management](https://github.com/user-attachments/assets/9c6d0777-0012-43ca-8927-5384c0d9d1a7)
+
+**Assigned Tasks — Track who is working on what**
+![Admin Assigned Tasks](https://github.com/user-attachments/assets/fe63b5a2-040e-41ce-859e-a27a27a3404a)
 
 ---
 
@@ -321,7 +315,7 @@ To trigger a manual deploy, click **"Deploy"** in the Railway dashboard.
 Developed with ❤️ by **Dinesh Kushwaha**
 
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat-square&logo=github&logoColor=white)](https://github.com/)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mrdinesh-kushwaha/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/)
 
 ---
 
