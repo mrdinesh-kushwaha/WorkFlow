@@ -53,7 +53,7 @@
 
 | Signup | Login |
 |--------|-------|
-| ![Signup](https://github.com/user-attachments/assets/5b4b739e-5fbd-48d7-b9c8-631620a38b32) | ![Login](https://github.com/user-attachments/assets/728b3329-ef22-485f-8279-03c7265df69d) |
+| ![Signup](https://github.com/user-attachments/assets/aa91e01d-524b-4649-9a90-ed7428945418) | ![Login](https://github.com/user-attachments/assets/728b3329-ef22-485f-8279-03c7265df69d) |
 
 ---
 
