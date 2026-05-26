@@ -47,50 +47,34 @@
 
 ---
 
-## 🖼️ Application Preview
-
-### 📚 Homepage
-
-<img width="959" height="446" alt="Image" src="https://github.com/user-attachments/assets/5b1b1d58-8173-40f5-bb1b-7a15e558eec6" />
-<img width="959" height="446" alt="Image" src="https://github.com/user-attachments/assets/da5ef415-317c-4a40-af78-70cd2d015ccb" />
-
----
-
+### 🏠 Homepage
+| | |
+|--|--|
+| ![Home1](https://github.com/user-attachments/assets/5b1b1d58-8173-40f5-bb1b-7a15e558eec6) | ![Home2](https://github.com/user-attachments/assets/da5ef415-317c-4a40-af78-70cd2d015ccb) |
+ 
 ### 🔑 Authentication
-
 | Signup | Login |
 |--------|-------|
 | ![Signup](https://github.com/user-attachments/assets/aa91e01d-524b-4649-9a90-ed7428945418) | ![Login](https://github.com/user-attachments/assets/e1596b3f-6773-4d6c-9703-353853838215) |
-
----
-
+ 
 ### 👤 Member Experience
-
-**Dashboard — Personal task overview with status & activity feed**
-![Member Dashboard](https://github.com/user-attachments/assets/c44050af-819c-4fd9-a2de-9d1b30cabcb3)
-
-**Projects — Browse and access assigned projects**
-![Member Projects](https://github.com/user-attachments/assets/5aaea614-f630-4514-a993-a9f25e649f7f)
-
-**Tasks — View, filter, and update task status**
-![Member Tasks](https://github.com/user-attachments/assets/b9b70ed5-0e9b-4505-873a-e979b3b38bde)
-
----
-
+| Dashboard | Projects |
+|-----------|----------|
+| ![Member Dashboard](https://github.com/user-attachments/assets/c44050af-819c-4fd9-a2de-9d1b30cabcb3) | ![Member Projects](https://github.com/user-attachments/assets/5aaea614-f630-4514-a993-a9f25e649f7f) |
+ 
+| Tasks | |
+|-------|--|
+| ![Member Tasks](https://github.com/user-attachments/assets/b9b70ed5-0e9b-4505-873a-e979b3b38bde) | |
+ 
 ### 🛡️ Admin Experience
-
-**Dashboard — Full team analytics, overdue monitoring & activity log**
-![Admin Dashboard](https://github.com/user-attachments/assets/47724419-7b36-4d94-8bc1-d08f4626ec38)
-
-**Projects — Create and manage all team projects**
-![Admin Projects](https://github.com/user-attachments/assets/1f602647-30d5-4b75-9139-4d3585fcc764)
-
-**Task Management — Create tasks, set priority and deadlines**
-![Admin Task Management](https://github.com/user-attachments/assets/9c6d0777-0012-43ca-8927-5384c0d9d1a7)
-
-**Assigned Tasks — Track who is working on what**
-![Admin Assigned Tasks](https://github.com/user-attachments/assets/fe63b5a2-040e-41ce-859e-a27a27a3404a)
-
+| Dashboard | Projects |
+|-----------|----------|
+| ![Admin Dashboard](https://github.com/user-attachments/assets/47724419-7b36-4d94-8bc1-d08f4626ec38) | ![Admin Projects](https://github.com/user-attachments/assets/1f602647-30d5-4b75-9139-4d3585fcc764) |
+ 
+| Task Management | Assigned Tasks |
+|-----------------|----------------|
+| ![Admin Task Management](https://github.com/user-attachments/assets/9c6d0777-0012-43ca-8927-5384c0d9d1a7) | ![Admin Assigned Tasks](https://github.com/user-attachments/assets/fe63b5a2-040e-41ce-859e-a27a27a3404a) |
+ 
 ---
 
 ## 🏗️ Tech Stack
