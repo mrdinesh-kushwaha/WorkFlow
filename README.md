@@ -17,7 +17,7 @@
 
 <br />
 
-[Live Demo](https://taskflow-platform-production.up.railway.app/) · [Application Preview](#-authentication) · [Report Bug](../../issues) · [Request Feature](../../issues) · [Documentation](#-rest-api-reference)
+[Live Demo](https://taskflow-platform-production.up.railway.app/) · [Application Preview](#-homepage) · [Report Bug](../../issues) · [Request Feature](../../issues) · [Documentation](#-rest-api-reference)
 
 
 </div>
@@ -48,6 +48,13 @@
 ---
 
 ## 🖼️ Application Preview
+
+### 📚 Homepage
+
+<img width="959" height="446" alt="Image" src="https://github.com/user-attachments/assets/5b1b1d58-8173-40f5-bb1b-7a15e558eec6" />
+<img width="959" height="446" alt="Image" src="https://github.com/user-attachments/assets/da5ef415-317c-4a40-af78-70cd2d015ccb" />
+
+---
 
 ### 🔑 Authentication
 
