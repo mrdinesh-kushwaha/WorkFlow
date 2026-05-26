@@ -50,8 +50,9 @@
 ### 🏠 Homepage
 | | |
 |--|--|
-| ![Home1](https://github.com/user-attachments/assets/5b1b1d58-8173-40f5-bb1b-7a15e558eec6) | ![Home2](https://github.com/user-attachments/assets/da5ef415-317c-4a40-af78-70cd2d015ccb) |
- 
+| ![Home1](https://github.com/user-attachments/assets/5b1b1d58-8173-40f5-bb1b-7a15e558eec6) | ![Home2](https://github.com/user-attachments/assets/320c0c07-43a0-43d6-815d-512fb0e3185e) |
+| ![Home3](https://github.com/user-attachments/assets/80656384-b8e4-43a2-8fb2-841fa0283a91) | ![Home4](https://github.com/user-attachments/assets/a0368222-9112-4188-a252-54b6c3d38832) |
+
 ### 🔑 Authentication
 | Signup | Login |
 |--------|-------|
