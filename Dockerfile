@@ -28,6 +28,10 @@ WORKDIR /app
 
 COPY --from=backend-build /app/backend/target/taskmanager-backend-1.0.0.jar app.jar
 
-EXPOSE 8080
+# EXPOSE 8080
 
-ENTRYPOINT ["java", "-Dspring.profiles.active=prod", "-jar", "/app/app.jar"]
+# ENTRYPOINT ["java", "-Dspring.profiles.active=prod", "-jar", "/app/app.jar"]
+
+EXPOSE 10000
+
+CMD java -Dspring.profiles.active=prod -Dserver.port=${PORT:-10000} -jar /app/app.jar
