@@ -18,8 +18,6 @@
 <br />
 
 [Live Demo](https://workflow-platform.netlify.app) · [Application Preview](#-homepage) · [Report Bug](../../issues) · [Request Feature](../../issues) · [Documentation](#-rest-api-reference)
-=======
-[Live Demo](https://workflow-platform-production.up.railway.app/) · [Application Preview](#-homepage) · [Report Bug](../../issues) · [Request Feature](../../issues) · [Documentation](#-rest-api-reference)
 
 </div>
 
