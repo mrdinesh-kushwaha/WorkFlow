@@ -12,12 +12,12 @@
 [![React](https://img.shields.io/badge/React_18-20232A?style=flat-square&logo=react&logoColor=61DAFB)](https://reactjs.org/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=flat-square&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 [![Docker](https://img.shields.io/badge/Docker-2CA5E0?style=flat-square&logo=docker&logoColor=white)](https://www.docker.com/)
-[![Railway](https://img.shields.io/badge/Railway-0B0D0E?style=flat-square&logo=railway&logoColor=white)](https://railway.app/)
+[![netlify](https://img.shields.io/badge/netlify-0B0D0E?style=flat-square&logo=netlify&logoColor=white)](https://netlify.app/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](LICENSE)
 
 <br />
 
-[Live Demo](https://taskflow-platform-production.up.railway.app/) · [Application Preview](#-homepage) · [Report Bug](../../issues) · [Request Feature](../../issues) · [Documentation](#-rest-api-reference)
+[Live Demo](https://taskflow-platform.netlify.app) · [Application Preview](#-homepage) · [Report Bug](../../issues) · [Request Feature](../../issues) · [Documentation](#-rest-api-reference)
 
 
 </div>
@@ -42,8 +42,8 @@
 | ✅ **Task Management** | Create, assign, prioritize, and track tasks across projects |
 | 📊 **Real-Time Dashboard** | Live overview of task statuses, overdue items, and recent activity |
 | ⚠️ **Auto Overdue Detection** | Automatically flags past-due tasks; clears on `DONE` status |
-| 🗄️ **Dual DB Support** | H2 for local dev, PostgreSQL for production via Railway |
-| 🚂 **Dockerized Deployment** | Multi-stage Docker build with one-click Railway deployment |
+| 🗄️ **Dual DB Support** | H2 for local dev, PostgreSQL for production via Neon|
+| 🚂 **Dockerized Deployment** | Multi-stage Docker build with one-click netlify deployment |
 
 ---
 
@@ -78,6 +78,16 @@
  
 ---
 
+## Production Grade Deployement:
+
+```
+Forntend - Netlify
+Backend - Render
+Database - Neon
+```
+
+---
+
 ## 🏗️ Tech Stack
 
 ```
@@ -90,7 +100,7 @@
 │  ORM         │  Spring Data JPA · Hibernate             │
 │  Frontend    │  React 18 · React Router v6              │
 │  HTTP Client │  Axios                                   │
-│  Deployment  │  Railway · Docker (multi-stage build)    │
+│  Deployment  │  netlify · Docker (multi-stage build)    │
 └─────────────┴──────────────────────────────────────────┘
 ```
 
@@ -118,7 +128,7 @@ taskmanager/
 │       └── components/                   # Shared UI (Layout, Sidebar, etc.)
 │
 ├── Dockerfile                            # Multi-stage Docker build
-└── railway.toml                          # Railway deployment config
+└── netlify.toml                          # netlify deployment config
 ```
 
 ---
@@ -236,21 +246,21 @@ docker run -p 8080:8080 \
 
 ---
 
-## 🚂 Deploying to Railway
+## 🚂 Deploying to netlify
 
-### Step 1 — Create a Railway Account
-Sign up at [railway.app](https://railway.app) using your GitHub account.
+### Step 1 — Create a netlify Account
+Sign up at [netlify.app](https://netlify.app) using your GitHub account.
 
 ### Step 2 — New Project
 Click **"New Project"** → **"Deploy from GitHub Repo"** (push your code to GitHub first).
 
 ### Step 3 — Add PostgreSQL
 Click **"+ New"** → **"Database"** → **"Add PostgreSQL"**.
-Railway automatically provisions: `PGHOST`, `PGPORT`, `PGUSER`, `PGPASSWORD`, `PGDATABASE`.
+netlify automatically provisions: `PGHOST`, `PGPORT`, `PGUSER`, `PGPASSWORD`, `PGDATABASE`.
 
 ### Step 4 — Connect Your Repo
 Click **"+ New"** → **"GitHub Repo"** and select your repository.
-Railway auto-detects your `Dockerfile`.
+netlify auto-detects your `Dockerfile`.
 
 ### Step 5 — Set Environment Variables
 
@@ -262,20 +272,20 @@ SPRING_DATASOURCE_URL=jdbc:postgresql://${{Postgres.PGHOST}}:${{Postgres.PGPORT}
 PGUSER=${{Postgres.PGUSER}}
 PGPASSWORD=${{Postgres.PGPASSWORD}}
 JWT_SECRET=YourSuperSecretKeyHereMakeItLongAndRandom123!@#
-CORS_ORIGINS=https://your-app.up.railway.app
+CORS_ORIGINS=https://your-app.up.netlify.app
 PORT=8080
 ```
 
-> 💡 **Tip:** Use Railway variable references like `${{Postgres.PGHOST}}` to automatically link your database credentials to your app service.
+> 💡 **Tip:** Use netlify variable references like `${{Postgres.PGHOST}}` to automatically link your database credentials to your app service.
 
 ### Step 6 — Generate a Public Domain
 Go to your service → **Settings** → **Networking** → **Generate Domain**.
 
-Your app will be live at `https://your-app-name.up.railway.app` 🎉
+Your app will be live at `https://your-app-name.up.netlify.app` 🎉
 
 ### Step 7 — Auto-Deployments
-Railway auto-deploys on every `git push` to your connected branch.
-To trigger a manual deploy, click **"Deploy"** in the Railway dashboard.
+netlify auto-deploys on every `git push` to your connected branch.
+To trigger a manual deploy, click **"Deploy"** in the netlify dashboard.
 
 ---
 
