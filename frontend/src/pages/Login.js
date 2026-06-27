@@ -68,10 +68,6 @@ const Login = () => {
                                 opacity:0.9
                             }}
                         />
-<<<<<<< HEAD
-
-=======
->>>>>>> bd0b8b3 (initial commit)
                         <div
                             style={{
                                 position:'absolute',
