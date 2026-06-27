@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="https://img.shields.io/badge/TaskFlow-v1.0.0-6366f1?style=for-the-badge&logoColor=white" alt="TaskFlow" />
+<img src="https://img.shields.io/badge/WorkFlow-v1.0.0-6366f1?style=for-the-badge&logoColor=white" alt="WorkFlow" />
 
-# TaskFlow
+# WorkFlow
 ### Enterprise-Grade Team Task Management Platform
 
 *Centralize. Collaborate. Execute.*
@@ -17,8 +17,9 @@
 
 <br />
 
-[Live Demo](https://taskflow-platform.netlify.app) · [Application Preview](#-homepage) · [Report Bug](../../issues) · [Request Feature](../../issues) · [Documentation](#-rest-api-reference)
-
+[Live Demo](https://workflow-platform.netlify.app) · [Application Preview](#-homepage) · [Report Bug](../../issues) · [Request Feature](../../issues) · [Documentation](#-rest-api-reference)
+=======
+[Live Demo](https://workflow-platform-production.up.railway.app/) · [Application Preview](#-homepage) · [Report Bug](../../issues) · [Request Feature](../../issues) · [Documentation](#-rest-api-reference)
 
 </div>
 
@@ -26,9 +27,9 @@
 
 ## 🧭 Overview
 
-**TaskFlow** is a production-ready, full-stack project management platform built with **Spring Boot** and **React**. Designed for modern teams, it eliminates scattered task tracking and missed deadlines by providing a unified workspace with secure role-based access, real-time dashboards, and automated overdue detection.
+**WorkFlow** is a production-ready, full-stack project management platform built with **Spring Boot** and **React**. Designed for modern teams, it eliminates scattered task tracking and missed deadlines by providing a unified workspace with secure role-based access, real-time dashboards, and automated overdue detection.
 
-> Whether you're managing a small dev team or a cross-functional department, TaskFlow gives you the visibility and control to ship faster.
+> Whether you're managing a small dev team or a cross-functional department, WorkFlow gives you the visibility and control to ship faster.
 
 ---
 
@@ -229,10 +230,10 @@ npm start
 
 ```bash
 # Build the image
-docker build -t taskflow .
+docker build -t workflow .
 
 # Run in dev mode (H2)
-docker run -p 8080:8080 taskflow
+docker run -p 8080:8080 workflow
 
 # Run in production mode (PostgreSQL)
 docker run -p 8080:8080 \
@@ -241,7 +242,7 @@ docker run -p 8080:8080 \
   -e PGUSER=postgres \
   -e PGPASSWORD=secret \
   -e JWT_SECRET=MySecretKey123 \
-  taskflow
+  workflow
 ```
 
 ---

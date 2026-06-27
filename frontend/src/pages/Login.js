@@ -90,7 +90,7 @@ const Login = () => {
                         </div>
                     </div>
                     <h1 style={{ color:'#f1f5f9', fontSize:28, fontWeight:700, margin:0, letterSpacing:'-0.6px' }}>Welcome back</h1>
-                    <p style={{ color:'#64748b', marginTop:8, fontSize:14 }}>Sign in to your TaskFlow account</p>
+                    <p style={{ color:'#64748b', marginTop:8, fontSize:14 }}>Sign in to your WorkFlow account</p>
                 </div>
 
                 <div style={{ background:'#1e293b', borderRadius:16, padding:32, border:'1px solid #334155' }}>

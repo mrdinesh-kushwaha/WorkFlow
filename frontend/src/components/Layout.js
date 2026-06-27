@@ -80,7 +80,7 @@ const Layout = () => {
             {sidebarOpen && (
                 <div style={{ display:'flex', alignItems:'center', gap:8 }}>
                   <div style={{ width:32, height:32, background:'linear-gradient(135deg,#6366f1,#8b5cf6)', borderRadius:8, display:'flex', alignItems:'center', justifyContent:'center', fontSize:16, fontWeight:700 }}>T</div>
-                  <span style={{ fontWeight:700, fontSize:16, color:'#f1f5f9' }}>TaskFlow</span>
+                  <span style={{ fontWeight:700, fontSize:16, color:'#f1f5f9' }}>WorkFlow</span>
                 </div>
             )}
 

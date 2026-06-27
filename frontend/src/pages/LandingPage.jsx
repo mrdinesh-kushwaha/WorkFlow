@@ -92,7 +92,7 @@ const LandingPage = () => {
           <span className="logo-icon">
             <CheckSquare size={24} />
           </span>
-                    <span>TaskFlow</span>
+                    <span>WorkFlow</span>
                 </Link>
 
                 <div className="landing-nav-actions">
@@ -115,7 +115,7 @@ const LandingPage = () => {
                     </h1>
 
                     <p className="hero-description">
-                        TaskFlow helps teams manage projects, collaborate securely,
+                        WorkFlow helps teams manage projects, collaborate securely,
                         assign tasks, monitor deadlines, and track progress through
                         role-based dashboards for Admins and Members.
                     </p>
@@ -156,7 +156,7 @@ const LandingPage = () => {
                         <div className="visual-header">
                             <div>
                                 <p>Dashboard Overview</p>
-                                <h3>TaskFlow Analytics</h3>
+                                <h3>WorkFlow Analytics</h3>
                             </div>
                             <BarChart3 size={30} />
                         </div>
@@ -197,11 +197,11 @@ const LandingPage = () => {
 
             <section className="problem-section reveal">
                 <div className="section-heading">
-                    <p>Why TaskFlow?</p>
+                    <p>Why WorkFlow?</p>
                     <h2>Built to reduce scattered task tracking and missed deadlines</h2>
                     <span>
             Modern teams need centralized visibility, secure collaboration,
-            and faster execution. TaskFlow brings projects, members, tasks,
+            and faster execution. WorkFlow brings projects, members, tasks,
             statuses, deadlines, and dashboards into one clean workflow.
           </span>
                 </div>
@@ -294,12 +294,12 @@ const LandingPage = () => {
                     <h2>Ready to manage your team workflow smarter?</h2>
                     <p>
                         Start organizing projects, assigning tasks, tracking deadlines, and
-                        improving team accountability with TaskFlow.
+                        improving team accountability with WorkFlow.
                     </p>
 
                     <div className="cta-actions">
                         <Link to="/signup" className="primary-cta">
-                            Start with TaskFlow
+                            Start with WorkFlow
                         </Link>
                         <Link to="/login" className="secondary-cta dark">
                             Login
@@ -310,7 +310,7 @@ const LandingPage = () => {
 
             <footer className="landing-footer">
                 <div>
-                    <h3>TaskFlow</h3>
+                    <h3>WorkFlow</h3>
                     <p>
                         A full-stack team task management platform for secure project
                         collaboration and productivity tracking.
@@ -347,7 +347,7 @@ const LandingPage = () => {
                 </div>
 
                 <p className="copyright">
-                    © 2026 TaskFlow. All rights reserved.
+                    © 2026 WorkFlow. All rights reserved.
                 </p>
             </footer>
         </div>
