@@ -57,6 +57,7 @@ public class SecurityConfig {
                                 "/logo512.png",
                                 "/asset-manifest.json"
                         ).permitAll()
+                        .requestMatchers("/api/auth/health").permitAll()
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/h2-console/**").permitAll()
                         .requestMatchers("/actuator/**").permitAll()
