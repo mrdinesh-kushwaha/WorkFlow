@@ -47,18 +47,18 @@
 ### 🏠 Homepage
 | | |
 |--|--|
-| ![Home1](https://github.com/user-attachments/assets/5b1b1d58-8173-40f5-bb1b-7a15e558eec6) | ![Home2](https://github.com/user-attachments/assets/320c0c07-43a0-43d6-815d-512fb0e3185e) |
-| ![Home3](https://github.com/user-attachments/assets/80656384-b8e4-43a2-8fb2-841fa0283a91) | ![Home4](https://github.com/user-attachments/assets/a0368222-9112-4188-a252-54b6c3d38832) |
+| ![Home1](https://github.com/user-attachments/assets/636b7b5b-90e5-4fb6-a278-1026f34ba127) | ![Home2](https://github.com/user-attachments/assets/729683d0-36d3-4107-9952-a5d423b0f6e8) |
+| ![Home3](https://github.com/user-attachments/assets/b10a4971-04c8-497b-824f-2586a5a2eeb0) | ![Home4](https://github.com/user-attachments/assets/49f29c69-60cb-4619-99c7-21c7b7588eef) |
 
 ### 🔑 Authentication
 | Signup | Login |
 |--------|-------|
-| ![Signup](https://github.com/user-attachments/assets/aa91e01d-524b-4649-9a90-ed7428945418) | ![Login](https://github.com/user-attachments/assets/e1596b3f-6773-4d6c-9703-353853838215) |
+| ![Signup](https://github.com/user-attachments/assets/8eb90bf8-fd35-4e6b-9e31-e110f74495b9) | ![Login](https://github.com/user-attachments/assets/af395172-5b16-4f10-aadc-6301aa92e14a) |
  
 ### 👤 Member Experience
 | Dashboard | Projects |
 |-----------|----------|
-| ![Member Dashboard](https://github.com/user-attachments/assets/c44050af-819c-4fd9-a2de-9d1b30cabcb3) | ![Member Projects](https://github.com/user-attachments/assets/5aaea614-f630-4514-a993-a9f25e649f7f) |
+| ![Member Dashboard](https://github.com/user-attachments/assets/8eb90bf8-fd35-4e6b-9e31-e110f74495b9) | ![Member Projects](https://github.com/user-attachments/assets/5aaea614-f630-4514-a993-a9f25e649f7f) |
  
 | Tasks | |
 |-------|--|
