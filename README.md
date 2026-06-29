@@ -58,20 +58,21 @@
 ### 👤 Member Experience
 | Dashboard | Projects |
 |-----------|----------|
-| ![Member Dashboard](https://github.com/user-attachments/assets/8eb90bf8-fd35-4e6b-9e31-e110f74495b9) | ![Member Projects](https://github.com/user-attachments/assets/5aaea614-f630-4514-a993-a9f25e649f7f) |
+| ![Member Dashboard](https://github.com/user-attachments/assets/0fd76753-9ce1-4946-aa5f-99b9bd80ad35) | ![Member Projects](https://github.com/user-attachments/assets/89f17005-a972-4af0-8bd6-fd27a7ea4e8b) |
  
 | Tasks | |
 |-------|--|
-| ![Member Tasks](https://github.com/user-attachments/assets/b9b70ed5-0e9b-4505-873a-e979b3b38bde) | |
+| ![Member Tasks](https://github.com/user-attachments/assets/0dcd4f24-2c52-4e3e-b6bf-283f8abb50af) | |
  
 ### 🛡️ Admin Experience
 | Dashboard | Projects |
 |-----------|----------|
-| ![Admin Dashboard](https://github.com/user-attachments/assets/47724419-7b36-4d94-8bc1-d08f4626ec38) | ![Admin Projects](https://github.com/user-attachments/assets/1f602647-30d5-4b75-9139-4d3585fcc764) |
+| ![Admin Dashboard](https://github.com/user-attachments/assets/08e24320-4d9c-4b0f-ad09-a059d6e2ebce) | ![Admin Projects](https://github.com/user-attachments/assets/38b41d9c-0ca4-43fd-8af8-342f5286c88d) |
  
 | Task Management | Assigned Tasks |
 |-----------------|----------------|
-| ![Admin Task Management](https://github.com/user-attachments/assets/9c6d0777-0012-43ca-8927-5384c0d9d1a7) | ![Admin Assigned Tasks](https://github.com/user-attachments/assets/fe63b5a2-040e-41ce-859e-a27a27a3404a) |
+| ![Admin Task Management](https://github.com/user-attachments/assets/713bbd8f-4341-44d5-8166-590d78f655ec) | ![Admin Assigned Tasks](<img width="1802" height="872" alt="image" src="https://github.com/user-attachments/assets/d2011f84-b9cd-4582-9908-47a479ceec59" />
+) |
  
 ---
 
