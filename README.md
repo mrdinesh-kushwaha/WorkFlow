@@ -1,7 +1,5 @@
 <div align="center">
 
-<img src="https://img.shields.io/badge/WorkFlow-v1.0.0-6366f1?style=for-the-badge&logoColor=white" alt="WorkFlow" />
-
 # WorkFlow
 ### Enterprise-Grade Team Task Management Platform
 
