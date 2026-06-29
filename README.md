@@ -71,8 +71,7 @@
  
 | Task Management | Assigned Tasks |
 |-----------------|----------------|
-| ![Admin Task Management](https://github.com/user-attachments/assets/713bbd8f-4341-44d5-8166-590d78f655ec) | ![Admin Assigned Tasks](<img width="1802" height="872" alt="image" src="https://github.com/user-attachments/assets/d2011f84-b9cd-4582-9908-47a479ceec59" />
-) |
+| ![Admin Task Management](https://github.com/user-attachments/assets/713bbd8f-4341-44d5-8166-590d78f655ec) | ![Admin Assigned Tasks](https://github.com/user-attachments/assets/d2011f84-b9cd-4582-9908-47a479ceec59) |
  
 ---
 
